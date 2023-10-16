@@ -40,11 +40,11 @@ export const LoginForm = () => {
     e.preventDefault();
     try {
       await dispatch(login({ email, password }));
+      e.target[0].value = '';
+      e.target[1].value = '';
       setEmail('');
       setPassword('');
-    } catch (error) {
-      throw error;
-    }
+    } catch (error) {}
   };
 
   return (

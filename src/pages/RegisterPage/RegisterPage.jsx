@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import Notiflix from 'notiflix';
 import { RegisterForm } from '../../components/RegisterForm/RegisterForm';
 import {
   Container,
@@ -8,6 +10,11 @@ import {
 } from './RegisterPage.styled';
 
 export const RegisterPage = () => {
+  const reject = useSelector(state => state.auth.reject);
+
+  if (reject) {
+    Notiflix.Notify.warning('User with this email already exists.');
+  }
   return (
     <>
       <RegisterHeader></RegisterHeader>

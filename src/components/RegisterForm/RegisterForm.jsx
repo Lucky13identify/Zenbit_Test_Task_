@@ -43,6 +43,8 @@ export const RegisterForm = () => {
     }
     try {
       await dispatch(register({ email, password }));
+      e.target[0].value = '';
+      e.target[1].value = '';
       setEmail('');
       setPassword('');
     } catch (error) {

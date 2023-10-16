@@ -8,29 +8,41 @@ const initialState = {
   },
   token: null,
   isLoggedIn: false,
+  reject: false,
 };
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {},
-  extraReducers: builder => {
-    builder
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-      })
-      .addCase(logout.fulfilled, state => {
-        state.user = { name: null, email: null };
-        state.token = null;
-        state.isLoggedIn = false;
-      })
-      .addCase(login.fulfilled, (state, action) => {
-        state.user = action.payload;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
-      });
+  extraReducers: {
+    [register.rejected](state, action) {
+      state.reject = true;
+    },
+    [register.fulfilled](state, action) {
+      state.user = action.payload;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+      state.reject = false;
+    },
+    [logout.fulfilled](state, action) {
+      state.user = { name: null, email: null };
+      state.token = null;
+      state.isLoggedIn = false;
+      state.reject = false;
+    },
+    [register.rejected](state, action) {
+      state.reject = true;
+    },
+    [login.rejected](state, action) {
+      state.reject = true;
+    },
+    [login.fulfilled](state, action) {
+      state.user = action.payload;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+      state.reject = false;
+    },
   },
 });
 

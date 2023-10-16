@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import Notiflix from 'notiflix';
 import { LoginForm } from '../../components/LoginForm/LoginForm';
 import {
   Container,
@@ -8,6 +10,12 @@ import {
 } from './LoginPage.styled';
 
 export const LoginPage = () => {
+  const reject = useSelector(state => state.auth.reject);
+
+  if (reject) {
+    Notiflix.Notify.warning('Incorrect password or email');
+  }
+
   return (
     <>
       <RegisterHeader></RegisterHeader>{' '}
