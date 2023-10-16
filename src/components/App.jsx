@@ -8,8 +8,8 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/Zenbit_Test_Task_/register" element={<RegisterPage />} />
-        <Route path="Zenbit_Test_Task_/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </>
   );

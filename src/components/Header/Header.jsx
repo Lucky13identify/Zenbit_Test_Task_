@@ -18,11 +18,11 @@ export const Header = () => {
   const isUserLoggedIn = useSelector(isLoggedIn);
 
   const goToLoginPage = () => {
-    navigate('/Zenbit_Test_Task_/login');
+    navigate('/login');
   };
   const signButtnon = e => {
     if (e.target.textContent === 'Sign Up') {
-      navigate('/Zenbit_Test_Task_/register');
+      navigate('/register');
     } else {
       dispatch(logout());
     }
