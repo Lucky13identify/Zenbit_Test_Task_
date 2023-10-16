@@ -17,3 +17,8 @@ Welcome to the application designed for tracking real estate deals!
 5. If a user enters an email that does not pass validation, they will receive a
    corresponding
    notification.![Invalid email](./assets/forReadme/screen_three.png)
+6. When registering, if a user with the same email already exists, you will
+   receive a notification.
+   ![Invalid register](./assets/forReadme/screen_six.png)
+7. When logging in, if the email or password does not match, you will also
+   receive a notification. ![Invalid login](./assets/forReadme/screen_seven.png)
