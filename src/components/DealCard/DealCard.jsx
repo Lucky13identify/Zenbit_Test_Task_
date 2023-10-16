@@ -1,7 +1,6 @@
 import {
   Container,
   Header,
-  ContainerUl,
   ContainerInfo,
   ContainerLi,
   ContainerLiSold,
@@ -24,19 +23,19 @@ export const DealCard = deal => {
         <Header>{head}</Header>
         <ContainerInfo>
           <ContainerLi>
-            <p>{numberOne} Dhs</p>
+            <p>{Number(numberOne).toLocaleString()} Dhs</p>
           </ContainerLi>
           <ContainerLi>
-            <p>Yield 9.25%</p>
+            <p>Yield {numberThree}%</p>
           </ContainerLi>
           <ContainerLiSold>
-            <p>Sold 75%</p>
+            <p>Sold {numberFive}%</p>
           </ContainerLiSold>
           <ContainerLi>
-            <p>Tiket - 60 000 Dhs </p>
+            <p>Tiket - {Number(numberTwo).toLocaleString()} Dhs </p>
           </ContainerLi>
           <ContainerLi>
-            <p>Days left 150 </p>
+            <p>Days left {numberFour} </p>
           </ContainerLi>
         </ContainerInfo>
       </div>

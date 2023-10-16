@@ -1,4 +1,8 @@
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { isLoggedIn } from '../../redux/Authentication/selectors';
+import { logout } from '../../redux/Authentication/AuthOperations';
+import icon from '../../assets/symbol-defs.svg';
 import {
   Container,
   ButtonContainer,
@@ -7,11 +11,6 @@ import {
   User,
   Icon,
 } from './Header.styled';
-import { useSelector } from 'react-redux';
-import { isLoggedIn } from '../../redux/Authentication/selectors';
-import { useDispatch } from 'react-redux';
-import { logout } from '../../redux/Authentication/AuthOperations';
-import icon from '../../assets/symbol-defs.svg';
 
 export const Header = () => {
   const navigate = useNavigate();

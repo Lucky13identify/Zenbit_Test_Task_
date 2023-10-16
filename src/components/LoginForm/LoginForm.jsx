@@ -1,3 +1,7 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { login } from '../../redux/Authentication/AuthOperations';
 import {
   Container,
   Label,
@@ -9,19 +13,13 @@ import {
   HaveAcc,
   SignUp,
 } from './LoginForm.styled';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { login } from '../../redux/Authentication/AuthOperations';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 export const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const isUserLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const navigate = useNavigate();
+  const isUserLoggedIn = useSelector(state => state.auth.isLoggedIn);
 
   useEffect(() => {
     if (isUserLoggedIn) {
@@ -40,9 +38,13 @@ export const LoginForm = () => {
 
   const submitRegisterForm = async e => {
     e.preventDefault();
-    await dispatch(login({ email, password }));
-    setEmail('');
-    setPassword('');
+    try {
+      await dispatch(login({ email, password }));
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      throw error;
+    }
   };
 
   return (

@@ -12,9 +12,6 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './Authentication/AuthSlice';
 import { dealsReducer } from './Deals/DealsSlice';
-// import { reviewsReducer } from './reviews/reviewsSlice';
-// import { tasksReducer } from './tasks/tasksSlice';
-// import themeReducer from './themeSlice';
 
 const authPersistConfig = {
   key: 'auth',

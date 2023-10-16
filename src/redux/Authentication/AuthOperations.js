@@ -1,5 +1,5 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 axios.defaults.baseURL = 'http://localhost:8080';
 
@@ -17,14 +17,15 @@ export const login = createAsyncThunk('auth/login', async object => {
     const { data } = await axios.post('/api/auth/login', object);
     token.set(data.token);
     return data;
-  } catch (error) {}
+  } catch (error) {
+    throw error;
+  }
 });
 
 export const register = createAsyncThunk('auth/register', async object => {
   try {
     const { data } = await axios.post('/api/auth/register', object);
     token.set(data.token);
-    console.log(data);
     return data;
   } catch (error) {
     throw error;
@@ -39,21 +40,3 @@ export const logout = createAsyncThunk('auth/logout', async () => {
     throw error;
   }
 });
-
-export const fetchCurrentUser = createAsyncThunk(
-  'auth/refresh',
-  async (_, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const persistToken = state.auth.token;
-
-    if (token === null) {
-      return state;
-    } else {
-      token.set(persistToken);
-      try {
-        const { data } = await axios.get('/users/current');
-        return data;
-      } catch (e) {}
-    }
-  }
-);

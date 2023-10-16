@@ -1,3 +1,8 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { register } from '../../redux/Authentication/AuthOperations';
+import Notiflix from 'notiflix';
 import {
   Container,
   Label,
@@ -6,20 +11,11 @@ import {
   FlexContainer,
   Header,
 } from './RegisterForm.styled';
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { register, login } from '../../redux/Authentication/AuthOperations';
-import { isLoggedIn } from '../../redux/Authentication/selectors';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import Notiflix from 'notiflix';
 
 export const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const user = useSelector(state => state.auth.user);
   const isUserLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const navigate = useNavigate();
 
@@ -42,7 +38,7 @@ export const RegisterForm = () => {
     e.preventDefault();
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     if (!emailRegex.test(email)) {
-      Notiflix.Notify.warning('Invalid email');
+      Notiflix.Notify.warning('Invalid');
       return;
     }
     try {
@@ -50,7 +46,7 @@ export const RegisterForm = () => {
       setEmail('');
       setPassword('');
     } catch (error) {
-      console.log(error);
+      throw error;
     }
   };
   return (
