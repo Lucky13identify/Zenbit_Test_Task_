@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { login } from '../../redux/Authentication/AuthOperations';
 import {
   Container,
@@ -11,7 +11,6 @@ import {
   Header,
   ForgotPassword,
   HaveAcc,
-  SignUp,
 } from './LoginForm.styled';
 
 export const LoginForm = () => {
@@ -76,7 +75,7 @@ export const LoginForm = () => {
         <ForgotPassword href="">Forgot password?</ForgotPassword>
         <Button type="submit">Login</Button>
         <HaveAcc>
-          Don’t have account? <SignUp href="/register">Sign Up</SignUp>
+          Don’t have account? <NavLink to="/register">Sign Up</NavLink>
         </HaveAcc>
       </Container>
     </>
