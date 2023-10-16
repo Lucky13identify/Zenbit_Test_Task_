@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+const hover = `
+  &:hover {
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: rgba(178, 159, 126, 0.6);
+  }
+
+`;
+
 export const Container = styled.form`
   display: inline-flex;
   width: 500px;
@@ -62,4 +70,6 @@ export const Button = styled.button`
   background-color: #b29f7e;
 
   cursor: pointer;
+
+  ${hover}
 `;

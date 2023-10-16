@@ -1,12 +1,5 @@
 import styled from 'styled-components';
 
-export const ContainerUl = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  width: 1280px;
-  gap: 20px;
-`;
-
 export const Container = styled.li`
   width: 630px;
   height: 400px;
@@ -16,7 +9,8 @@ export const Container = styled.li`
   font-weight: 700;
   line-height: 1.2;
 
-  background-color: grey;
+  background-image: url(${props => props.props});
+  background-position: center;
 `;
 
 export const Header = styled.p`

@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+const hover = `
+  &:hover {
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: rgba(178, 159, 126, 0.6);
+  }
+
+`;
+
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
@@ -53,4 +61,6 @@ export const Button = styled.button`
   color: #ffffff;
 
   cursor: pointer;
+
+  ${hover}
 `;

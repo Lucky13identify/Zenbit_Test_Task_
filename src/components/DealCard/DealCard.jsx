@@ -7,95 +7,39 @@ import {
   ContainerLiSold,
 } from './DealCard.styled';
 
-export const DealCard = () => {
+export const DealCard = deal => {
+  const {
+    img,
+    numberOne,
+    numberTwo,
+    numberThree,
+    numberFour,
+    numberFive,
+    head,
+  } = deal.deal;
+
   return (
-    <ContainerUl>
-      <Container>
-        {/* <img src="" alt="" /> */}
-        <div>
-          <Header>The Marina Torch</Header>
-          <ContainerInfo>
-            <ContainerLi>
-              <p>6 500 000 Dhs</p>
-            </ContainerLi>
-            <ContainerLi>
-              <p>Yield 9.25%</p>
-            </ContainerLi>
-            <ContainerLiSold>
-              <p>Sold 75%</p>
-            </ContainerLiSold>
-            <ContainerLi>
-              <p>Tiket - 60 000 Dhs </p>
-            </ContainerLi>
-            <ContainerLi>
-              <p>Days left 150 </p>
-            </ContainerLi>
-          </ContainerInfo>
-        </div>
-      </Container>
-      <Container>
-        {/* <img src="" alt="" /> */}
-        <Header>The Marina Torch</Header>
-        <ul>
-          <li>
-            <p>6 500 000 Dhs</p>
-          </li>
-          <li>
-            <p>Tiket - 60 000 Dhs</p>
-          </li>
-          <li>
+    <Container props={img}>
+      <div>
+        <Header>{head}</Header>
+        <ContainerInfo>
+          <ContainerLi>
+            <p>{numberOne} Dhs</p>
+          </ContainerLi>
+          <ContainerLi>
             <p>Yield 9.25%</p>
-          </li>
-          <li>
-            <p>Days left 150 </p>
-          </li>
-          <li>
+          </ContainerLi>
+          <ContainerLiSold>
             <p>Sold 75%</p>
-          </li>
-        </ul>
-      </Container>
-      <Container>
-        {/* <img src="" alt="" /> */}
-        <Header>The Marina Torch</Header>
-        <ul>
-          <li>
-            <p>6 500 000 Dhs</p>
-          </li>
-          <li>
-            <p>Tiket - 60 000 Dhs</p>
-          </li>
-          <li>
-            <p>Yield 9.25%</p>
-          </li>
-          <li>
+          </ContainerLiSold>
+          <ContainerLi>
+            <p>Tiket - 60 000 Dhs </p>
+          </ContainerLi>
+          <ContainerLi>
             <p>Days left 150 </p>
-          </li>
-          <li>
-            <p>Sold 75%</p>
-          </li>
-        </ul>
-      </Container>
-      <Container>
-        {/* <img src="" alt="" /> */}
-        <Header>The Marina Torch</Header>
-        <ul>
-          <li>
-            <p>6 500 000 Dhs</p>
-          </li>
-          <li>
-            <p>Tiket - 60 000 Dhs</p>
-          </li>
-          <li>
-            <p>Yield 9.25%</p>
-          </li>
-          <li>
-            <p>Days left 150 </p>
-          </li>
-          <li>
-            <p>Sold 75%</p>
-          </li>
-        </ul>
-      </Container>
-    </ContainerUl>
+          </ContainerLi>
+        </ContainerInfo>
+      </div>
+    </Container>
   );
 };

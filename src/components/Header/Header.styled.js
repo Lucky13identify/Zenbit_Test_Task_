@@ -11,6 +11,14 @@ const commonStylesButton = `
   font-size: 16px;
   line-height: 1.4;`;
 
+const hover = `
+  &:hover {
+    transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: rgba(178, 159, 126, 0.6);
+  }
+
+`;
+
 export const Container = styled.header`
   display: flex;
   justify-content: space-between;
@@ -36,6 +44,8 @@ export const ButtonLogIn = styled.button`
   color: #B29F7E;
   border: 1px solid #b29f7e;
   background-color: transparent;
+
+  ${hover}
 `;
 
 export const ButtonSign = styled.button`
@@ -43,4 +53,16 @@ export const ButtonSign = styled.button`
   color: #ffffff;
   border: none;
   background-color: #b29f7e;
+
+  ${hover}
+`;
+
+export const User = styled.p`
+  color: #ffffff;
+  font-weight: bold;
+`;
+
+export const Icon = styled.svg`
+  fill: #b29f7e;
+  width: 50px;
 `;

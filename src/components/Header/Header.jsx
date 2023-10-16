@@ -4,27 +4,52 @@ import {
   ButtonContainer,
   ButtonLogIn,
   ButtonSign,
+  User,
+  Icon,
 } from './Header.styled';
+import { useSelector } from 'react-redux';
+import { isLoggedIn } from '../../redux/Authentication/selectors';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../redux/Authentication/AuthOperations';
+import icon from '../../assets/symbol-defs.svg';
 
 export const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const isUserLoggedIn = useSelector(isLoggedIn);
 
-  const goToRegisterPage = () => {
-    navigate('/register');
-  };
   const goToLoginPage = () => {
     navigate('/login');
   };
+  const signButtnon = e => {
+    if (e.target.textContent === 'Sign Up') {
+      navigate('/register');
+    } else {
+      dispatch(logout());
+    }
+  };
+
   return (
     <Container>
-      <div>My Logo</div>
+      {isUserLoggedIn ? (
+        <User>Welcome, my dear guest!</User>
+      ) : (
+        <Icon>
+          <use href={icon + '#database'}></use>
+        </Icon>
+      )}
 
       <ButtonContainer>
-        <ButtonLogIn type="button" onClick={goToLoginPage}>
-          Log In
-        </ButtonLogIn>
-        <ButtonSign type="button" onClick={goToRegisterPage}>
-          Sign Up
+        {isUserLoggedIn ? (
+          ''
+        ) : (
+          <ButtonLogIn type="button" onClick={goToLoginPage}>
+            Log In
+          </ButtonLogIn>
+        )}
+
+        <ButtonSign type="button" onClick={signButtnon}>
+          {isUserLoggedIn ? 'Sign Out' : 'Sign Up'}
         </ButtonSign>
       </ButtonContainer>
     </Container>

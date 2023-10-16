@@ -9,14 +9,26 @@ import {
   HaveAcc,
   SignUp,
 } from './LoginForm.styled';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-// import { login } from '../../redux/Authentication/AuthOperations';
+import { login } from '../../redux/Authentication/AuthOperations';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 export const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const isUserLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isUserLoggedIn) {
+      navigate('/');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isUserLoggedIn]);
 
   const handleChange = e => {
     if (e.target.name === 'Email') {
@@ -26,12 +38,11 @@ export const LoginForm = () => {
     }
   };
 
-  const submitRegisterForm = e => {
+  const submitRegisterForm = async e => {
     e.preventDefault();
-    console.log(email, password);
-    // dispatch(login({ email, password }));
-    // setEmail('');
-    // setPassword('');
+    await dispatch(login({ email, password }));
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -61,7 +72,7 @@ export const LoginForm = () => {
           </Label>
         </FlexContainer>
         <ForgotPassword href="">Forgot password?</ForgotPassword>
-        <Button type="submit">Register</Button>
+        <Button type="submit">Login</Button>
         <HaveAcc>
           Don’t have account? <SignUp href="/register">Sign Up</SignUp>
         </HaveAcc>

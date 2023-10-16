@@ -6,14 +6,29 @@ import {
   FlexContainer,
   Header,
 } from './RegisterForm.styled';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-// import { register } from '../../redux/Authentication/AuthOperations';
+import { useSelector } from 'react-redux';
+import { register, login } from '../../redux/Authentication/AuthOperations';
+import { isLoggedIn } from '../../redux/Authentication/selectors';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import Notiflix from 'notiflix';
 
 export const RegisterForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.auth.user);
+  const isUserLoggedIn = useSelector(state => state.auth.isLoggedIn);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isUserLoggedIn) {
+      navigate('/');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isUserLoggedIn]);
 
   const handleChange = e => {
     if (e.target.name === 'Email') {
@@ -23,12 +38,20 @@ export const RegisterForm = () => {
     }
   };
 
-  const submitRegisterForm = e => {
+  const submitRegisterForm = async e => {
     e.preventDefault();
-    console.log(email, password);
-    // dispatch(register({ email, password }));
-    // setEmail('');
-    // setPassword('');
+    const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+    if (!emailRegex.test(email)) {
+      Notiflix.Notify.warning('Invalid email');
+      return;
+    }
+    try {
+      await dispatch(register({ email, password }));
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
@@ -43,6 +66,7 @@ export const RegisterForm = () => {
               name="Email"
               type="text"
               placeholder="Email"
+              required
             />
           </Label>
           <Label htmlFor="Password">
@@ -53,6 +77,7 @@ export const RegisterForm = () => {
               name="Password"
               type="text"
               placeholder="Password"
+              required
             />
           </Label>
         </FlexContainer>

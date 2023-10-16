@@ -1,25 +1,40 @@
-import { configureStore, createSlice } from '@reduxjs/toolkit';
-// import { fetchDeals } from './operations';
-import { autsSlice } from './Authentication/AuthSlice';
+import { configureStore } from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { authReducer } from './Authentication/AuthSlice';
+import { dealsReducer } from './Deals/DealsSlice';
+// import { reviewsReducer } from './reviews/reviewsSlice';
+// import { tasksReducer } from './tasks/tasksSlice';
+// import themeReducer from './themeSlice';
 
-export const initialState = {
-  deals: {
-    items: [],
-    isLoading: false,
-    error: null,
-  },
+const authPersistConfig = {
+  key: 'auth',
+  storage,
+  whitelist: ['isLoggedIn', 'user'],
 };
 
-const dealsSlice = createSlice({
-  name: 'deals',
-  initialState: initialState,
-  reducers: {},
-  extraReducers: {},
-});
+const persistedReducer = persistReducer(authPersistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
-    deals: dealsSlice.reducer,
-    auth: autsSlice.reducer,
+    deals: dealsReducer,
+    auth: persistedReducer,
   },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
+
+export const persistor = persistStore(store);

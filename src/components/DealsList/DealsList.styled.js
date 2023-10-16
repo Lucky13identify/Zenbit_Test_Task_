@@ -1,16 +1,23 @@
 import styled from 'styled-components';
 
+export const ContainerUl = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  width: 1280px;
+  gap: 20px;
+`;
+
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
 
-  max-width: 1280px;
+  width: 1280px;
 
-  padding-top: 50px;
-  padding-bottom: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   padding-left: 80px;
   padding-right: 80px;
-
+  gap: 20px;
   margin-left: auto;
   margin-right: auto;
 `;
