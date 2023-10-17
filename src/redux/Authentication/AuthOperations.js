@@ -25,7 +25,6 @@ export const login = createAsyncThunk('auth/login', async object => {
 export const register = createAsyncThunk('auth/register', async object => {
   try {
     const { data } = await axios.post('/api/auth/register', object);
-    console.log(data);
     token.set(data.token);
     return data;
   } catch (error) {
