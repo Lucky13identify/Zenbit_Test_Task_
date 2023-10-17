@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:8080';
+axios.defaults.baseURL = 'https://zenbit-test-task-backend.onrender.com';
 
 const token = {
   set(token) {
@@ -25,6 +25,7 @@ export const login = createAsyncThunk('auth/login', async object => {
 export const register = createAsyncThunk('auth/register', async object => {
   try {
     const { data } = await axios.post('/api/auth/register', object);
+    console.log(data);
     token.set(data.token);
     return data;
   } catch (error) {

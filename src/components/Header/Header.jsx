@@ -25,7 +25,7 @@ export const Header = () => {
       navigate('/register');
     } else {
       dispatch(logout());
-      window.location.reload();
+      // window.location.reload();
     }
   };
 
