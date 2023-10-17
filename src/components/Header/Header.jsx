@@ -20,12 +20,12 @@ export const Header = () => {
   const goToLoginPage = () => {
     navigate('/login');
   };
+
   const signButtnon = e => {
     if (e.target.textContent === 'Sign Up') {
       navigate('/register');
     } else {
       dispatch(logout());
-      // window.location.reload();
     }
   };
 
