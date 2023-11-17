@@ -6,11 +6,11 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
-
+//  basename="/Zenbit_Test_Task_"
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter basename="/Zenbit_Test_Task_">
+      <BrowserRouter>
         <Provider store={store}>
           <App />
         </Provider>
