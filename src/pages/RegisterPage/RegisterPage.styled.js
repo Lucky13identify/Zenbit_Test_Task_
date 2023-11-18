@@ -10,6 +10,7 @@ export const ImgThumb = styled.div`
 `;
 
 export const FlexContainer = styled.div`
+  justify-content: center;
   display: flex;
   flex-direction: row-reverse;
 `;
@@ -21,7 +22,6 @@ export const FlexContainerForm = styled.div`
 `;
 
 export const RegisterHeader = styled.header`
-  max-width: 1440px;
   height: 80px;
   background-color: #172234;
 `;

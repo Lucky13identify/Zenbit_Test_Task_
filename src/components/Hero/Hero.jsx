@@ -9,7 +9,7 @@ export const Hero = () => {
         field reflects the beam, while the mass defect is not formed. The
         chemical compound is negatively charged. Twhile the mass defect is{' '}
       </Text>
-      <Button>Get Started</Button>
+      <Button type="button">Get Started</Button>
     </Container>
   );
 };

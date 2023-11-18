@@ -17,7 +17,7 @@ export const RegisterPage = () => {
   }
   return (
     <>
-      <RegisterHeader></RegisterHeader>
+      {/* <div className="container"> */} <RegisterHeader></RegisterHeader>
       <Container>
         <FlexContainer>
           <FlexContainerForm>
@@ -27,11 +27,12 @@ export const RegisterPage = () => {
           <ImgThumb>
             <img
               src="https://res.cloudinary.com/dici0468p/image/upload/v1700249376/deals/nochnoj_gorod_vid_sverhu_ogni_goroda_134887_1024x768_l3omdr.jpg"
-              alt=""
+              alt="City view"
             />
           </ImgThumb>
         </FlexContainer>
       </Container>
+      {/* </div> */}
     </>
   );
 };

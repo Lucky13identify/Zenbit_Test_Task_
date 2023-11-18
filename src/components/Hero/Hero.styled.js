@@ -13,7 +13,6 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   height: 944px;
-  max-width: 1440px;
   padding-top: 297px;
 `;
 
@@ -30,7 +29,7 @@ export const Header = styled.h1`
 
 export const Text = styled.p`
   margin-bottom: 30px;
-
+  width: 1300px;
   text-align: center;
   font-family: Lato;
   font-size: 24px;
