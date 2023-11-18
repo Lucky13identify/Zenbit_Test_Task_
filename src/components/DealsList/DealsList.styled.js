@@ -1,22 +1,25 @@
 import styled from 'styled-components';
 
+export const ContainerSpinener = styled.div`
+  margin-left: auto;
+  margin-right: auto;
+`;
+
 export const ContainerUl = styled.ul`
   display: flex;
-  /* justify-content: center; */
   flex-wrap: wrap;
-
   gap: 20px;
 `;
 
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
+  gap: 20px;
 
   width: 1280px;
 
   margin-top: 50px;
   margin-bottom: 50px;
-  gap: 20px;
   margin-left: auto;
   margin-right: auto;
 `;

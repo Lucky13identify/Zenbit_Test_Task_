@@ -17,7 +17,7 @@ export const RegisterPage = () => {
   }
   return (
     <>
-      {/* <div className="container"> */} <RegisterHeader></RegisterHeader>
+      <RegisterHeader></RegisterHeader>
       <Container>
         <FlexContainer>
           <FlexContainerForm>
@@ -32,7 +32,6 @@ export const RegisterPage = () => {
           </ImgThumb>
         </FlexContainer>
       </Container>
-      {/* </div> */}
     </>
   );
 };

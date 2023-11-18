@@ -9,6 +9,7 @@ export const Container = styled.li`
   font-weight: 700;
   line-height: 1.2;
 
+  background-color: grey;
   background-image: url(${props => props.props});
   background-position: center;
 `;
@@ -29,6 +30,7 @@ export const Header = styled.p`
 export const ContainerInfo = styled.ul`
   display: flex;
   flex-wrap: wrap;
+
   column-gap: 60px;
   row-gap: 10px;
   margin-left: 14px;

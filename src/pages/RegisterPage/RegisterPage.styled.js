@@ -5,7 +5,8 @@ export const Container = styled.section`
 `;
 
 export const ImgThumb = styled.div`
-  max-width: 890px;
+  background-color: grey;
+  width: 890px;
   height: 943px;
 `;
 
