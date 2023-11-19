@@ -8,7 +8,6 @@ import {
   ButtonContainer,
   ButtonLogIn,
   ButtonSign,
-  User,
   Icon,
 } from './Header.styled';
 
@@ -31,13 +30,9 @@ export const Header = () => {
 
   return (
     <Container>
-      {isUserLoggedIn ? (
-        <User>Welcome, my dear guest!</User>
-      ) : (
-        <Icon>
-          <use href={icon + '#database'}></use>
-        </Icon>
-      )}
+      <Icon>
+        <use href={icon + '#database'}></use>
+      </Icon>
 
       <ButtonContainer>
         {isUserLoggedIn ? (
